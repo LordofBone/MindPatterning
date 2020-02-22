@@ -129,7 +129,7 @@ def data_reader(mind_state, file_name):
     print('Press Ctrl-C in the console to break the while loop.')
 
     # try:
-    endTime = datetime.datetime.now() + datetime.timedelta(seconds=30)
+    endTime = datetime.datetime.now() + datetime.timedelta(minutes=2)
     # The following loop acquires data, computes band powers, and calculates neurofeedback metrics based on those band powers
     try:
         while True:
@@ -194,7 +194,7 @@ def data_reader(mind_state, file_name):
             final += generateline(relaxed, alpha_metric, beta_metric, theta_metric)
 
         csvwrite(mind_state, final, file_name)
-        print('30 Seconds of data gathered, Writing CSV')
+        print('Data gathered, Writing CSV')
         return
     # If the stream is lost it will cause an index error above as there is no data, this will capture that and
     # restart the stream for this run
