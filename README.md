@@ -7,6 +7,9 @@ https://choosemuse.com/
 and a Raspberry Pi (preferrably a 4):
 https://shop.pimoroni.com/collections/raspberry-pi
 
+Will also require Tensorflow to be installed:
+https://maker.pro/raspberry-pi/projects/how-to-set-up-the-machine-learning-software-tensorflow-on-raspberry-pi
+
 https://blog.adafruit.com/2018/05/28/recording-brainwaves-with-a-raspberry-pi/https://github.com/alexandrebarachant/muse-lsl
 https://stackoverflow.com/questions/33684894/numpy-disutils-system-info-notfounderror-no-lapack-blas-resources-found
 https://stackoverflow.com/questions/29586487/still-cant-install-scipy-due-to-missing-fortran-compiler-after-brew-install-gcc
