@@ -9,7 +9,6 @@ def gatherer(data_type, file_no):
 
     sleep(5)
 
-    # Gather sets of information, the passed in int controls how many times this is run, 30 seconds of data each
     for x in range(file_no):
 
         print("Relax your mind...")

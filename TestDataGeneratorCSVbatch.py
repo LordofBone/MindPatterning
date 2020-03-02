@@ -1,5 +1,3 @@
-# This code is from here https://github.com/TomDF47/EEG-Test-Data-Generator
-# Thanks to them
 from random import randint
 import argparse
 import random
@@ -8,7 +6,7 @@ import random
 # For the purposes of this test data generation high values are going to be considered 'non-relaxed' mind state
 def csv_generator(times, datagen, noisy, file_name_out):
 
-    # Totally random data
+    #FULL
     def generatefull():
         global main
         main = ''
@@ -20,7 +18,6 @@ def csv_generator(times, datagen, noisy, file_name_out):
             main += '{0},{1},{2},{3}'.format(relaxed, alphaR, betaC, thetaR) + '\n'
         return main
 
-    # Low 'relaxed' data
     def generatelow():
         global main
         main = ''
@@ -32,7 +29,7 @@ def csv_generator(times, datagen, noisy, file_name_out):
             main += '{0},{1},{2},{3}'.format(relaxed, alphaR, betaC, thetaR) + '\n'
         return main
 
-    # Middle 'noisy' data
+    #MID
     def generatemid():
         global main
         main = ''
@@ -44,7 +41,7 @@ def csv_generator(times, datagen, noisy, file_name_out):
             main += '{0},{1},{2},{3}'.format(relaxed, alphaR, betaC, thetaR) + '\n'
         return main
 
-    # High 'non-relaxed' data
+    #HIGH
     def generatehigh():
         global main
         main = ''
@@ -56,7 +53,6 @@ def csv_generator(times, datagen, noisy, file_name_out):
             main += '{0},{1},{2},{3}'.format(relaxed, alphaR, betaC, thetaR) + '\n'
         return main
 
-    # Function for checking existing file names
     def findemptyfile(type):
         try:
             found = False
@@ -71,10 +67,7 @@ def csv_generator(times, datagen, noisy, file_name_out):
             found = True
         return type + str(index) + ".csv"
 
-    # This is where the data can have noisy data included (middling data with random relaxed/non-relaxed
-    # to emulate some inconsitencies that may exist in real data, also fully random data can be made
-    # and a file name can be passed in to create test_data.csv etc without having to manually rename,
-    # if no file name is passed in it will do a standard default file name that shouldn't overwrite anything else
+    #COMMANDS
     final = 'Relaxed,Alpha Relaxation,Beta Concentration,Theta Relaxation' + '\n'
     for i in range(0, times):
         if datagen == ("random"):

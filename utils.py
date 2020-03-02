@@ -8,8 +8,6 @@ epoching, and transforming EEG data into frequency bands
 @author: Cassani
 """
 
-# As above none of this code is mine, thanks to the author at https://github.com/alexandrebarachant/muse-lsl/
-
 import os
 import sys
 from tempfile import gettempdir
