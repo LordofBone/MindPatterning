@@ -129,7 +129,7 @@ def data_reader(mind_state, file_name):
     print('Press Ctrl-C in the console to break the while loop.')
 
     # try:
-    endTime = datetime.datetime.now() + datetime.timedelta(seconds=30)
+    endTime = datetime.datetime.now() + datetime.timedelta(minutes=2)
     # The following loop acquires data, computes band powers, and calculates neurofeedback metrics based on those band powers
     while True:
         if datetime.datetime.now() >= endTime:
@@ -193,7 +193,7 @@ def data_reader(mind_state, file_name):
         final += generateline(relaxed, alpha_metric, beta_metric, theta_metric)
 
     csvwrite(mind_state, final, file_name)
-    print('30 Seconds of data gathered, Writing CSV')
+    print('2 minutes of data gathered, Writing CSV')
     return
 
 
