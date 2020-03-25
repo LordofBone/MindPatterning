@@ -28,7 +28,7 @@ def model_trainer(epoch_num, numeric_columns, packed_train_data, packed_test_dat
 
     print('\n\nTest Loss {}, Test Accuracy {}'.format(test_loss, test_accuracy))
 
-    #model.summary()
+    model.summary()
     model.save_weights('./relaxation_model')
 
     return model
