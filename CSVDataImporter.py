@@ -16,17 +16,23 @@ NUMERIC_FEATURES = ['Alpha Relaxation', 'Beta Concentration', 'Theta Relaxation'
 
 current_dir = os.getcwd()
 
-try:
-    TEST_DATA_URL = "file://" + current_dir + "/test_data.csv"
-    test_file_path = tf.keras.utils.get_file(current_dir + "/test_data.csv", TEST_DATA_URL)
-except:
-    print("No test data found.")
+# this checks for the existence of the csv files, they need to exist in order for the file paths to be set
+# with keras it seems, so this will generate them if they don't exist (blank; to be overwritten later)
+for x in range(2):
+    try:
+        TEST_DATA_URL = "file://" + current_dir + "/test_data.csv"
+        test_file_path = tf.keras.utils.get_file(current_dir + "/test_data.csv", TEST_DATA_URL)
+    except:
+        os.system('touch test_data.csv')
+        continue
 
-try:
-    TRAIN_DATA_URL = "file://" + current_dir + "/train_data.csv"
-    train_file_path = tf.keras.utils.get_file(current_dir + "/train_data.csv", TRAIN_DATA_URL)
-except:
-    print("No train data found.")
+for x in range(2):
+    try:
+        TRAIN_DATA_URL = "file://" + current_dir + "/train_data.csv"
+        train_file_path = tf.keras.utils.get_file(current_dir + "/train_data.csv", TRAIN_DATA_URL)
+    except:
+        os.system('touch train_data.csv')
+        continue
 
 
 class PackNumericFeatures(object):
@@ -40,6 +46,7 @@ class PackNumericFeatures(object):
         features['numeric'] = numeric_features
 
         return features, labels
+
 
 def get_numeric_columns(file_path):
     if file_path is None:
@@ -63,6 +70,7 @@ def get_numeric_columns(file_path):
 
     return numeric_columns
 
+
 def get_dataset(file_path, batch_num, LABEL_COLUMN, shuffle_buffer, **kwargs):
   dataset = tf.data.experimental.make_csv_dataset(
       file_path,
@@ -79,6 +87,7 @@ def get_dataset(file_path, batch_num, LABEL_COLUMN, shuffle_buffer, **kwargs):
       **kwargs)
   return dataset
 
+
 def import_test(batch_num):
 
 
@@ -89,8 +98,8 @@ def import_test(batch_num):
 
     return packed_test_data
 
-def import_train(batch_num):
 
+def import_train(batch_num):
 
     with open("train_data.csv") as f:
         row_count = sum(1 for line in f)
@@ -104,11 +113,13 @@ def import_train(batch_num):
 
     return packed_train_data
 
+
 def csv_import(batch_num):
+
     numeric_columns = get_numeric_columns(train_file_path)
 
-    packed_train_data= import_train(batch_num)
+    packed_train_data = import_train(batch_num)
 
-    packed_test_data= import_test(batch_num)
+    packed_test_data = import_test(batch_num)
 
     return numeric_columns, packed_train_data, packed_test_data
