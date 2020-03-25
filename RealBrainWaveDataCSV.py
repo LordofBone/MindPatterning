@@ -55,7 +55,7 @@ def csvwrite(relaxed_status, final, file_name):
     file.write(final)
 
 
-def data_reader(mind_state, file_name):
+def data_reader(mind_state, file_name, time):
     # Wait for stream to begin
     sleep(20)
 
@@ -129,7 +129,7 @@ def data_reader(mind_state, file_name):
     print('Press Ctrl-C in the console to break the while loop.')
 
     # try:
-    endTime = datetime.datetime.now() + datetime.timedelta(minutes=2)
+    endTime = datetime.datetime.now() + datetime.timedelta(minutes=time)
     # The following loop acquires data, computes band powers, and calculates neurofeedback metrics based on those band powers
     while True:
         if datetime.datetime.now() >= endTime:
@@ -193,7 +193,7 @@ def data_reader(mind_state, file_name):
         final += generateline(relaxed, alpha_metric, beta_metric, theta_metric)
 
     csvwrite(mind_state, final, file_name)
-    print('2 minutes of data gathered, Writing CSV')
+    print(str(time) + ' minutes of data gathered, Writing CSV')
     return
 
 
@@ -202,15 +202,17 @@ if __name__ == "__main__":
 
     parser.add_argument('-r', action="store", dest="relaxed_status", type=str, choices=['relaxed', 'non-relaxed'])
     parser.add_argument('-fname', action="store", dest="file_name", type=str, default=None)
+    parser.add_argument('-t', action="store", dest="time", type=int, default=5, help='Time of readings to take')
 
     args = parser.parse_args()
 
     mind_state = args.relaxed_status
     file_name = args.file_name
+    time = args.time
 
     run1 = threading.Thread(target=start_stream, args=())
     run1.start()
 
-    data_reader(mind_state, file_name)
+    data_reader(mind_state, file_name, time)
 
     sys.exit()

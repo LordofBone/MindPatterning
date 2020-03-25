@@ -19,7 +19,7 @@ def real_runner(batch_no, epoch_no):
     print("Getting training data...\n")
 
     sys.stdout.write(BOLD)
-    gatherer("train", 2)
+    gatherer("train", 1, 10)
 
     print("Done!\n")
 
@@ -27,7 +27,7 @@ def real_runner(batch_no, epoch_no):
     print("Getting testing data...\n")
 
     sys.stdout.write(BOLD)
-    gatherer("test", 1)
+    gatherer("test", 1, 2)
 
     print("Done!\n")
 
