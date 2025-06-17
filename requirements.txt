@@ -51,5 +51,5 @@ termcolor==1.1.0
 threadpoolctl==2.1.0
 typing-extensions==3.7.4.3
 urllib3==1.26.5
-Werkzeug==2.2.3
+Werkzeug==3.0.6
 wrapt==1.12.1
