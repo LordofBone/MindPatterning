@@ -1,3 +1,7 @@
+#### Quick Warning
+This code AND hardware should not be used for medical diagnosis. It's for fun/novelty use only, so bear that in mind 
+while using it.
+
 # MindPatterning
 Code for my long term 'Mind Patterning' project, will read brain EEG data from a headset and then train a TensorFlow model on the data to recognise different states of mind.
 
